@@ -2,7 +2,7 @@
 
 // [3,21 7,04 22,93 -2,71 78,24] -> 80,95
 
-double [] Massive()
+double [] CreateMassive()
 {
     System.Console.WriteLine("Введите длину массива");
     int length = Convert.ToInt32(Console.ReadLine());
@@ -32,41 +32,24 @@ void PrintArr(double [] arr)
     System.Console.WriteLine();
 }
 
-double FindMin (double [] arr)
+void FindDifMaxMin (double [] arr)
 {
     double min = arr[0];
-    for (int i = 0; i < arr.Length;i++ )
-    {
-       if(arr[i] < min)
-       {
-       min = arr[i];
-        }
-    }
-    return min;
-}
-
-double FindMax (double [] arr)
-{
     double max = arr[0];
     for (int i = 0; i < arr.Length;i++ )
     {
-       if(arr[i] > max)
-       {
-       max = arr[i];
+       if(arr[i] < min)
+        {
+            min = arr[i];
+        }
+        if(arr[i] > max)
+        {
+            max = arr[i];
         }
     }
-    return max;
+    System.Console.WriteLine("Разница между максимальным и минимальным элементами массива =  " +String.Format("{0:F2}",(max - min)));
 }
 
-void DifMaxMin(double max,double min)
-{
-    double Dif = max - min;
-    Dif = Math.Round(Dif,2);
-    System.Console.WriteLine("разница между максимальным и минимальным элементами массива = " +Dif);
-}
-
-double [] arr = Massive();
+double [] arr = CreateMassive();
 PrintArr(arr);
-FindMin(arr);
-FindMax(arr);
-DifMaxMin(FindMax(arr),FindMin(arr));
+FindDifMaxMin(arr);
